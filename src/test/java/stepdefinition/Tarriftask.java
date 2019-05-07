@@ -1,12 +1,12 @@
 package stepdefinition;
 
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -16,11 +16,26 @@ public class Tarriftask {
 	static WebDriver driver;
 	static String msg;
 	
-	@Given("The user should be in addtarrif plan page")
-	public void the_user_should_be_in_addtarrif_plan_page() {
+	@Before
+	public static void browserLaunch() {
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\ELCOT\\eclipse-workspace\\demo\\tarrif\\src\\driver\\chromedriver.exe");
 		driver=new ChromeDriver();
-		driver.get("http://demo.guru99.com/telecom/addtariffplans.php");
+		
+	}
+	
+	@After
+	public static void closeBrowser() {
+		driver.quit();
+	}
+
+	
+	@Given("The user should be in addtarrif plan page")
+	public void the_user_should_be_in_addtarrif_plan_page() {
+
+	
+//	System.setProperty("webdriver.chrome.driver", "C:\\Users\\ELCOT\\eclipse-workspace\\demo\\tarrif\\src\\driver\\chromedriver.exe");
+//	driver=new ChromeDriver();
+driver.get("http://demo.guru99.com/telecom/addtariffplans.php");
 	}
 
 	@When("The user fill in the form {string},{string},{string},{string},{string},{string},{string} and click submit")
@@ -41,6 +56,7 @@ public class Tarriftask {
 	@Then("The user should see the congrats message")
 	public void the_user_should_see_the_congrats_message() {
 	   Assert.assertTrue(driver.findElement(By.xpath("//h2[contains(text(),'Congratulation')]")).getText(),driver.getPageSource().contains("Congratulation"));
+	
 	}
 
 

@@ -3,7 +3,7 @@
 Feature: Title of your feature
   I want to use this template for my feature file
 
-  @tag1
+  
   Scenario: add tarrif functionality
     Given The user should launch addtarrif plan page url
     When The user fill in the form and click submit

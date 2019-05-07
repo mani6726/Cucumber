@@ -7,7 +7,7 @@ import cucumber.api.junit.Cucumber;
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features= "src/test/resources",glue= {"stepdefinition/Usinglist"},plugin= {"html:target"})
+@CucumberOptions(features= "src/test/resources",glue= {"stepdefinition"},plugin= {"html:target"},tags={"@smoke"})
 
 
 public class Testrunner {
